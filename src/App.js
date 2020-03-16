@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Provider } from 'react-redux'
+import store from './store';
 import './App.css';
 
 // component imports 
@@ -10,16 +12,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/">
-            Home page
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/">
+              Home page
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </Provider>
     )
   }
 }
