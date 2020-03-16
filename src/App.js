@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import './App.css';
 
+// component imports 
+import Register from './components/authentication/Register.js';
+
 
 class App extends React.Component {
 
@@ -10,7 +13,7 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route path="/register">
-            Register page
+            <Register />
           </Route>
           <Route path="/">
             Home page
