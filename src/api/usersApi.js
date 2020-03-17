@@ -1,4 +1,4 @@
-
+import apiURL from './config.js';
 
 
 export default {
@@ -17,6 +17,6 @@ export default {
             console.log('error while registering:', error);
         }
     } 
-    
+
 }
 

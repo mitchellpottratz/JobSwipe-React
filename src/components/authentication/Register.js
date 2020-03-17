@@ -22,7 +22,8 @@ class Register extends React.Component {
 			confirm_password: '',
 			is_candidate_user: false,
 			is_company_user: false,
-			errorMessages: []
+			errorMessages: [],
+			hasRegistered: false
 		}
 	}
 
@@ -58,9 +59,12 @@ class Register extends React.Component {
 		this.checkOneCheckboxIsSelected();
 
 		const userFormData = this.formatUserFormData();
-		this.props.registerUser(userFormData);
+		const response = await this.props.registerUser(userFormData);
 
-			
+		if (response.status.code === 201) {
+			console.log('successfully registered');
+			this.setState({ hasRegistered: true });
+		}	
 	}
 
 
@@ -112,6 +116,14 @@ class Register extends React.Component {
 
 
 	render() {
+
+		// if the user has successfully registered a message pops up telling them
+		// to confirm their email address
+		if (this.state.hasRegistered) {
+			return (
+				<h1>Please Confirm Your Email Address</h1>
+			)
+		}
 
 		return (
 			<Row className="py-4">

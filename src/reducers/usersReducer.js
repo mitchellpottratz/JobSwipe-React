@@ -2,8 +2,7 @@
 
 const initialState = {
     isLoggedIn: false,
-    isCompanyUser: false,
-    isCandidateUser: false,
+    emailIsConfirmed: false,
     userInfo: {}
 }
 
