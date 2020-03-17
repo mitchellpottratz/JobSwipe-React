@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { connect } from "react-redux";
+import { registerUser } from '../../actions/users.js'
+
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import FileInput from '../common/FileInput.js';
 
@@ -55,6 +58,9 @@ class Register extends React.Component {
 		this.checkOneCheckboxIsSelected();
 
 		const userFormData = this.formatUserFormData();
+		this.props.registerUser(userFormData);
+
+		
 	}
 
 
@@ -80,8 +86,8 @@ class Register extends React.Component {
 
 
 	checkOneCheckboxIsSelected = () => {
-		if ((!this.state.is_candidate_user && !this.is_company_user) ||
-				(this.state.is_company_user && this.is_company_user)) {
+		if ((this.state.is_candidate_user === false && this.is_company_user === false) |
+				(this.state.is_candidate_user === true && this.is_company_user === true)) {
 					this.setState({
 						errorMessages: [...this.state.errorMessages, 'Only one checkbox may be selected.']
 					});
@@ -92,12 +98,12 @@ class Register extends React.Component {
 	formatUserFormData = () => {
 		const userFormData = new FormData();
 
-		userFormData.append('file', this.state.image, this.state.image.name);
+		userFormData.append('image', this.state.image, this.state.image.name);
 		userFormData.append('first_name', this.state.first_name);
 		userFormData.append('last_name', this.state.last_name);
 		userFormData.append('email', this.state.email);
 		userFormData.append('password', this.state.password);
-		userFormData.append('confirm_password', this.state.confirmed_password);
+		userFormData.append('confirm_password', this.state.confirm_password);
 		userFormData.append('is_candidate_user', this.state.is_candidate_user);
 		userFormData.append('is_company_user', this.state.is_company_user);
 
@@ -235,4 +241,11 @@ class Register extends React.Component {
 }
 
 
-export default Register;
+const mapStateToProps = (state) => {
+	return {
+		isLoggedIn: state.isLoggedIn
+	}
+}
+
+export default connect(mapStateToProps, { registerUser })(Register);
+
