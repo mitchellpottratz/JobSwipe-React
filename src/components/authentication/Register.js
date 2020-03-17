@@ -4,6 +4,18 @@ import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 
 class Register extends React.Component {
 
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			first_name: "",
+			last_name: "",
+			email: "",
+			password: "",
+			confirm_password: ""
+		}
+	}
+
 	render() {
 		return (
 			<Row className="py-4">
@@ -22,6 +34,7 @@ class Register extends React.Component {
 											type="text"
 											placeholder="First Name" 
 											name="first_name"
+											value={ this.state.first_name }
 											/>
 									</Col>
 									<Col md={6} sm={12}>
@@ -30,6 +43,7 @@ class Register extends React.Component {
 											type="text"
 											placeholder="Last Name" 
 											name="last_name"
+											value={ this.state.last_name }
 											/>
 									</Col>
 								</Row>
@@ -40,6 +54,7 @@ class Register extends React.Component {
 										type="email" 
 										placeholder="Email"
 										name="email"
+										value={ this.state.email }
 										/>
 								</Form.Group>
 
@@ -50,6 +65,7 @@ class Register extends React.Component {
 											type="password"
 											placeholder="Password" 
 											name="password"
+											value={ this.state.password }
 											/>
 									</Col>
 									<Col md={6} sm={12}>
@@ -58,6 +74,7 @@ class Register extends React.Component {
 											type="password"
 											placeholder="Confirm Password" 
 											name="confirm_password"
+											value={ this.state.confirm_password }
 											/>
 									</Col>
 								</Row>
