@@ -5,6 +5,10 @@ class FileInput extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      imageUploaded: false,
+    }
   }
 
   render() {
@@ -14,7 +18,12 @@ class FileInput extends React.Component {
 			    type="file" 
 				  className="form-control file-input" 
 				  />
-			  <label>Upload Profile Picture</label>
+        { !this.state.imageUploaded ? (
+          <label>Upload Profile Picture</label>
+        ) : (
+          <label>Profile Picture Uploaded</label>
+        ) }
+			  
       </React.Fragment>
     )
   }

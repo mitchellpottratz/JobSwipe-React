@@ -49,9 +49,11 @@ button {
 .file-input + label {
   width: 50%;
   text-align: center;
-  font-size: 0.85em;
+  font-size: 0.9em;
+  font-weight: 600; 
+  border-radius: 2px;
   padding: 10px;
-  color: #007bff;
+  color: white;
   background-color: black;
   display: inline-block;
   background-color: lightgrey;
