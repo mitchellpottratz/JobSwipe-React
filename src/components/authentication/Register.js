@@ -12,9 +12,12 @@ class Register extends React.Component {
 			last_name: "",
 			email: "",
 			password: "",
-			confirm_password: ""
+			confirm_password: "",
+			is_candidate_user: "",
+			is_company_user: ""
 		}
 	}
+
 
 	render() {
 		return (
@@ -78,6 +81,22 @@ class Register extends React.Component {
 											/>
 									</Col>
 								</Row>
+
+								<Form.Group>
+									<Form.Check 
+										type="checkbox" 
+										label="Register as a candidate user" 
+										name="is_candidate_user"
+										/>
+  							</Form.Group>
+
+								<Form.Group>
+									<Form.Check 
+										type="checkbox" 
+										label="Register as a company user" 
+										name="is_company_user"
+										/>
+  							</Form.Group>
 
 								<Button variant="primary" type="submit" className="mt-2">Register</Button>
 							</Form>
