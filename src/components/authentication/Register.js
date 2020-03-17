@@ -18,8 +18,11 @@ class Register extends React.Component {
 		}
 	}
 
-	handleCheckBoxChange = (e) => {
+	handleTextInputChange = (e) => {
+		this.setState({ [e.target.name]: e.target.value });
+	}
 
+	handleCheckBoxChange = (e) => {
 		// makes sure only one check box is checked at the same time
 		this.setState({
 			is_candidate_user: false,
@@ -48,6 +51,7 @@ class Register extends React.Component {
 											placeholder="First Name" 
 											name="first_name"
 											value={ this.state.first_name }
+											onChange={ this.handleTextInputChange }
 											/>
 									</Col>
 									<Col md={6} sm={12}>
@@ -57,6 +61,7 @@ class Register extends React.Component {
 											placeholder="Last Name" 
 											name="last_name"
 											value={ this.state.last_name }
+											onChange={ this.handleTextInputChange }
 											/>
 									</Col>
 								</Row>
@@ -68,6 +73,7 @@ class Register extends React.Component {
 										placeholder="Email"
 										name="email"
 										value={ this.state.email }
+										onChange={ this.handleTextInputChange }
 										/>
 								</Form.Group>
 
@@ -79,6 +85,7 @@ class Register extends React.Component {
 											placeholder="Password" 
 											name="password"
 											value={ this.state.password }
+											onChange={ this.handleTextInputChange }
 											/>
 									</Col>
 									<Col md={6} sm={12}>
@@ -88,6 +95,7 @@ class Register extends React.Component {
 											placeholder="Confirm Password" 
 											name="confirm_password"
 											value={ this.state.confirm_password }
+											onChange={ this.handleTextInputChange }
 											/>
 									</Col>
 								</Row>
