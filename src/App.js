@@ -2,11 +2,16 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from 'react-redux'
 import store from './store';
+
+// react bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import { Container } from 'react-bootstrap';
 
 // component imports 
 import Register from './components/authentication/Register.js';
+
+
+import './App.css';
 
 
 class App extends React.Component {
@@ -16,12 +21,19 @@ class App extends React.Component {
       <Provider store={store}>
         <BrowserRouter>
           <Switch>
+
+            {/* Registration  */}
             <Route path="/register">
-              <Register />
+              <Container>
+                <Register />
+              </Container>
             </Route>
+
+            {/* Home */}
             <Route path="/">
               Home page
             </Route>
+            
           </Switch>
         </BrowserRouter>
       </Provider>
