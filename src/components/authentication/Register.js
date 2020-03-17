@@ -35,8 +35,8 @@ class Register extends React.Component {
 		this.setState({ [e.target.name]: e.target.checked });
 	}
 
-	handleFileInputChange = (e) => {
-		console.log('file input changed');
+	handleProfilePictureChange = (file) => {
+		this.setState({ image: file });
 	}
 
 	handleSubmit = async (e) => {
@@ -101,7 +101,7 @@ class Register extends React.Component {
 							<Form className="py-2" onSubmit={ this.handleSubmit }>
 								<Form.Group>
 									<FileInput 
-										handleFileInputChange={ this.handleFileInputChange }
+										handleFileUpload={ this.handleProfilePictureChange }
 										notUploadedLabel="Upload Profile Picture"
 										uploadedLabel="Profile Picture Uploaded"
 										/>

@@ -11,6 +11,20 @@ class FileInput extends React.Component {
     }
   }
 
+  handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    this.props.handleFileUpload(file);
+    
+    this.setState({
+      imageUploaded: true
+    });
+  }
+
+  // so the file input is cleared every time it is clicked
+  removeFileFromInput = (e) => {
+    e.target.value = null;
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -18,15 +32,23 @@ class FileInput extends React.Component {
           type="file" 
           id="file-input"
           name="file"
-          onChange={ this.props.handleFileInputChange }
+          onChange={ this.handleFileInputChange }
+          onClick={ this.removeFileFromInput }
 				/>
           
         { !this.state.imageUploaded ? (
-          <label htmlFor="file-input" className="file-input-label">{ this.props.notUploadedLabel }</label>
+          <label 
+            htmlFor="file-input" 
+            className="file-input-label">
+              { this.props.notUploadedLabel }
+          </label>
         ) : (
-          <label htmlFor="file-input" className="file-input-label">{ this.props.uploadedLabel }</label>
+          <label 
+            htmlFor="file-input" 
+            className="file-input-label">
+              { this.props.uploadedLabel }
+          </label>
         ) }
-			  
       </React.Fragment>
     )
   }
