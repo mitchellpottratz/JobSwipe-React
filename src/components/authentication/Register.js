@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
-import ImageUploader from 'react-images-upload';
 
 class Register extends React.Component {
 
@@ -8,14 +7,16 @@ class Register extends React.Component {
 		super(props)
 
 		this.state = {
-			first_name: "",
-			last_name: "",
-			email: "",
-			password: "",
-			confirm_password: "",
+			image: '',
+			first_name: '',
+			last_name: '',
+			email: '',
+			password: '',
+			confirm_password: '',
 			is_candidate_user: false,
 			is_company_user: false,
-			errorMessages: []
+			errorMessages: [],
+			imageUploadButtonText: 'Upload Profile Picture'
 		}
 	}
 
@@ -94,13 +95,7 @@ class Register extends React.Component {
 
 							<Form className="py-2" onSubmit={ this.handleSubmit }>
 								<Form.Group>
-									<ImageUploader
-                		withIcon={false}
-                		buttonText='Choose a Profile Picture'
-                		onChange={this.onDrop}
-                		imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                		maxFileSize={5242880}
-            			/>
+									
 								</Form.Group>
 								<Row>
 									<Col md={6} sm={12}>
