@@ -9,6 +9,7 @@ import { Container } from 'react-bootstrap';
 
 // component imports 
 import Register from './components/authentication/Register.js';
+import VerifyEmail from './components/authentication/VerifyEmail.js';
 
 // CSS
 import './App.css';
@@ -26,6 +27,13 @@ class App extends React.Component {
             <Route path="/register">
               <Container>
                 <Register />
+              </Container>
+            </Route>
+
+            {/* Verify Email Address */}
+            <Route path="/verify-email">
+              <Container>
+                <VerifyEmail />
               </Container>
             </Route>
 

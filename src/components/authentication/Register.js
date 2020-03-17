@@ -121,7 +121,7 @@ class Register extends React.Component {
 		// to confirm their email address
 		if (this.state.hasRegistered) {
 			return (
-				<h1>Please Confirm Your Email Address</h1>
+				<h2 className="text-center mt-4">Confirm Your Email Address</h2>
 			)
 		}
 
