@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
+import ImagesUploader from 'react-images-uploader';
 
 
 class Register extends React.Component {
@@ -33,14 +34,15 @@ class Register extends React.Component {
 		this.setState({ [e.target.name]: e.target.checked });
 	}
 
-	handleSubmit = (e) => {
+	handleSubmit = async (e) => {
 		e.preventDefault();
 
 		// clears all error messages which may be on the form
-		this.setState({ errorMessages: [] })
+		await this.setState({ errorMessages: [] });
 		
 		this.checkPassword();
-		
+		this.checkOneCheckboxIsSelected();
+
 	}
 
 	checkPassword = () => {
@@ -57,58 +59,71 @@ class Register extends React.Component {
 				passwordErrorMessages.push('Passwords must match')
 
 				this.setState({
-					errorMessages: passwordErrorMessages
+					errorMessages: [...this.state.errorMessages, ...passwordErrorMessages]
 				});
 			}
 		}
-
 	}
 
+	checkOneCheckboxIsSelected = () => {
+		if ((!this.state.is_candidate_user && !this.is_company_user) ||
+				(this.state.is_company_user && this.is_company_user)) {
+					this.setState({
+						errorMessages: [...this.state.errorMessages, 'Only one checkbox may be selected.']
+					});
+		}
+	}  
+
 	render() {
+
 		return (
 			<Row className="py-4">
 				<Col></Col>
 
-				<Col md={8} sm={8}>
+				<Col md={8} sm={12}>
 					<Card bg={"light"}>
 						<Card.Body>
 							<Card.Title>Register</Card.Title>
 
-							{ this.state.errorMessages.map(message => {
+							{ this.state.errorMessages.map((message, i) => {
 								return (
-									<div>
+									<div key={ i }>
 										<small className="text-danger">{ message }</small>
 									</div>
 								)
 							}) }
 
 							<Form className="py-2" onSubmit={ this.handleSubmit }>
-								<Row className="pb-3">
+								<Row>
 									<Col md={6} sm={12}>
-										<Form.Label>First Name</Form.Label>
-										<Form.Control 
-											required
-											type="text"
-											placeholder="First Name" 
-											name="first_name"
-											value={ this.state.first_name }
-											onChange={ this.handleTextInputChange }
-											/>
-									</Col>
+										<Form.Group>
+											<Form.Label>First Name</Form.Label>
+											<Form.Control 
+												required
+												type="text"
+												placeholder="First Name" 
+												name="first_name"
+												value={ this.state.first_name }
+												onChange={ this.handleTextInputChange }
+												/>
+											</Form.Group>
+										</Col>
 									<Col md={6} sm={12}>
-										<Form.Label>Last Name</Form.Label>
-										<Form.Control 
-											required
-											type="text"
-											placeholder="Last Name" 
-											name="last_name"
-											value={ this.state.last_name }
-											onChange={ this.handleTextInputChange }
-											/>
+										<Form.Group>
+											<Form.Label>Last Name</Form.Label>
+											<Form.Control 
+												required
+												type="text"
+												placeholder="Last Name" 
+												name="last_name"
+												value={ this.state.last_name }
+												onChange={ this.handleTextInputChange }
+												/>
+											</Form.Group>
 									</Col>
 								</Row>
 
-								<Form.Group controlId="validationCustom01">
+								<Form.Group>
 									<Form.Label>Email</Form.Label>
 									<Form.Control 
 										required
@@ -120,27 +135,31 @@ class Register extends React.Component {
 										/>
 								</Form.Group>
 
-								<Row className="pb-3">
+								<Row>
 									<Col md={6} sm={12}>
-										<Form.Label>Password</Form.Label>
-										<Form.Control 
-											type="password"
-											placeholder="Password" 
-											name="password"
-											value={ this.state.password }
-											onChange={ this.handleTextInputChange }
-											/>
-											<small>Must be atleast 8 characters long</small>
+										<Form.Group>
+											<Form.Label>Password</Form.Label>
+											<Form.Control 
+												type="password"
+												placeholder="Password" 
+												name="password"
+												value={ this.state.password }
+												onChange={ this.handleTextInputChange }
+												/>
+												<small>Must be atleast 8 characters long</small>
+											</Form.Group>
 									</Col>
 									<Col md={6} sm={12}>
-										<Form.Label>Confirm Password</Form.Label>
-										<Form.Control 
-											type="password"
-											placeholder="Confirm Password" 
-											name="confirm_password"
-											value={ this.state.confirm_password }
-											onChange={ this.handleTextInputChange }
-											/>
+										<Form.Group>
+											<Form.Label>Confirm Password</Form.Label>
+											<Form.Control 
+												type="password"
+												placeholder="Confirm Password" 
+												name="confirm_password"
+												value={ this.state.confirm_password }
+												onChange={ this.handleTextInputChange }
+												/>
+											</Form.Group>
 									</Col>
 								</Row>
 
@@ -176,5 +195,6 @@ class Register extends React.Component {
 		)
 	}
 }
+
 
 export default Register;

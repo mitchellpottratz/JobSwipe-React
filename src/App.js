@@ -10,7 +10,9 @@ import { Container } from 'react-bootstrap';
 // component imports 
 import Register from './components/authentication/Register.js';
 
-
+// CSS
+import 'react-images-uploader/styles.css';
+import 'react-images-uploader/font.css';
 import './App.css';
 
 
@@ -33,7 +35,7 @@ class App extends React.Component {
             <Route path="/">
               Home page
             </Route>
-            
+
           </Switch>
         </BrowserRouter>
       </Provider>
