@@ -12,11 +12,10 @@ code {
 }
 
 .card {
-  border-radius: 0px!important;
-  border-color: transparent;
-  -webkit-box-shadow: 0px 0px 1px 1px rgba(240,240,240,1);
-  -moz-box-shadow: 0px 0px 1px 1px rgba(240,240,240,1);
-  box-shadow: 0px 0px 1px 1px rgb(252, 251, 251);
+  border-radius: 1px!important;
+  border-color: transparent!important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.05)
+           
 }
 
 label {
@@ -26,6 +25,7 @@ label {
 input {
   font-size: 0.85em!important;
   border-radius: 0px!important;
+  border-color: rgba(0, 0, 0, .08)!important;
 }
 
 input:focus {

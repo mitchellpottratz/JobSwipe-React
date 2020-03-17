@@ -96,7 +96,7 @@ class Register extends React.Component {
 								<Form.Group>
 									<ImageUploader
                 		withIcon={false}
-                		buttonText='Choose a profile picture'
+                		buttonText='Choose a Profile Picture'
                 		onChange={this.onDrop}
                 		imgExtension={['.jpg', '.gif', '.png', '.gif']}
                 		maxFileSize={5242880}
