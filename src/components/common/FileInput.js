@@ -15,13 +15,16 @@ class FileInput extends React.Component {
     return (
       <React.Fragment>
         <input 
-			    type="file" 
-				  className="form-control file-input" 
-				  />
+          type="file" 
+          id="file-input"
+          name="file"
+          onChange={ this.props.handleFileInputChange }
+				/>
+          
         { !this.state.imageUploaded ? (
-          <label>Upload Profile Picture</label>
+          <label htmlFor="file-input" className="file-input-label">{ this.props.notUploadedLabel }</label>
         ) : (
-          <label>Profile Picture Uploaded</label>
+          <label htmlFor="file-input" className="file-input-label">{ this.props.uploadedLabel }</label>
         ) }
 			  
       </React.Fragment>

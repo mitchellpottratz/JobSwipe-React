@@ -17,8 +17,7 @@ class Register extends React.Component {
 			confirm_password: '',
 			is_candidate_user: false,
 			is_company_user: false,
-			errorMessages: [],
-			imageUploadButtonText: 'Upload Profile Picture'
+			errorMessages: []
 		}
 	}
 
@@ -36,6 +35,10 @@ class Register extends React.Component {
 		this.setState({ [e.target.name]: e.target.checked });
 	}
 
+	handleFileInputChange = (e) => {
+		console.log('file input changed');
+	}
+
 	handleSubmit = async (e) => {
 		e.preventDefault();
 
@@ -44,7 +47,6 @@ class Register extends React.Component {
 		
 		this.checkPassword();
 		this.checkOneCheckboxIsSelected();
-
 	}
 
 	checkPassword = () => {
@@ -98,7 +100,11 @@ class Register extends React.Component {
 
 							<Form className="py-2" onSubmit={ this.handleSubmit }>
 								<Form.Group>
-									<FileInput />
+									<FileInput 
+										handleFileInputChange={ this.handleFileInputChange }
+										notUploadedLabel="Upload Profile Picture"
+										uploadedLabel="Profile Picture Uploaded"
+										/>
 								</Form.Group>
 								<Row>
 									<Col md={6} sm={12}>
