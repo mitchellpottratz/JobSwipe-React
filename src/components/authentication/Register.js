@@ -60,7 +60,7 @@ class Register extends React.Component {
 		const userFormData = this.formatUserFormData();
 		this.props.registerUser(userFormData);
 
-		
+			
 	}
 
 
