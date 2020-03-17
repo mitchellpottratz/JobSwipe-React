@@ -19,8 +19,14 @@ class Register extends React.Component {
 	}
 
 	handleCheckBoxChange = (e) => {
-		console.log('checkbox clicked');
 
+		// makes sure only one check box is checked at the same time
+		this.setState({
+			is_candidate_user: false,
+			is_company_user: false	
+		});
+
+		this.setState({ [e.target.name]: e.target.checked });
 	}
 
 	render() {
