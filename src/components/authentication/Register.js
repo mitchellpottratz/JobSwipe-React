@@ -13,11 +13,15 @@ class Register extends React.Component {
 			email: "",
 			password: "",
 			confirm_password: "",
-			is_candidate_user: "",
-			is_company_user: ""
+			is_candidate_user: false,
+			is_company_user: false
 		}
 	}
 
+	handleCheckBoxChange = (e) => {
+		console.log('checkbox clicked');
+
+	}
 
 	render() {
 		return (
@@ -87,6 +91,8 @@ class Register extends React.Component {
 										type="checkbox" 
 										label="Register as a candidate user" 
 										name="is_candidate_user"
+										checked={ this.state.is_candidate_user }
+										onChange={ this.handleCheckBoxChange }
 										/>
   							</Form.Group>
 
@@ -95,6 +101,8 @@ class Register extends React.Component {
 										type="checkbox" 
 										label="Register as a company user" 
 										name="is_company_user"
+										checked={ this.state.is_company_user }
+										onChange={ this.handleCheckBoxChange }
 										/>
   							</Form.Group>
 
