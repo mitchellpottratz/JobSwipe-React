@@ -14,7 +14,8 @@ class Register extends React.Component {
 			password: "",
 			confirm_password: "",
 			is_candidate_user: false,
-			is_company_user: false
+			is_company_user: false,
+			errorMessages: []
 		}
 	}
 
@@ -32,6 +33,37 @@ class Register extends React.Component {
 		this.setState({ [e.target.name]: e.target.checked });
 	}
 
+	handleSubmit = (e) => {
+		e.preventDefault();
+
+		// clears all error messages which may be on the form
+		this.setState({ errorMessages: [] })
+		
+		this.checkPassword();
+		
+	}
+
+	checkPassword = () => {
+		const password = this.state.password;
+		const confirmed_password = this.state.confirm_password;
+
+		// show error message if the password is not atleast 8 characters long
+		if (password.length < 8) {
+			const passwordErrorMessages = [];
+			passwordErrorMessages.push('Password must be atleast 8 characters long');
+
+			// show error message if the passwords do not match
+			if (password !== confirmed_password) {
+				passwordErrorMessages.push('Passwords must match')
+
+				this.setState({
+					errorMessages: passwordErrorMessages
+				});
+			}
+		}
+
+	}
+
 	render() {
 		return (
 			<Row className="py-4">
@@ -42,11 +74,20 @@ class Register extends React.Component {
 						<Card.Body>
 							<Card.Title>Register</Card.Title>
 
-							<Form className="py-2">
+							{ this.state.errorMessages.map(message => {
+								return (
+									<div>
+										<small className="text-danger">{ message }</small>
+									</div>
+								)
+							}) }
+
+							<Form className="py-2" onSubmit={ this.handleSubmit }>
 								<Row className="pb-3">
 									<Col md={6} sm={12}>
 										<Form.Label>First Name</Form.Label>
 										<Form.Control 
+											required
 											type="text"
 											placeholder="First Name" 
 											name="first_name"
@@ -57,6 +98,7 @@ class Register extends React.Component {
 									<Col md={6} sm={12}>
 										<Form.Label>Last Name</Form.Label>
 										<Form.Control 
+											required
 											type="text"
 											placeholder="Last Name" 
 											name="last_name"
@@ -66,9 +108,10 @@ class Register extends React.Component {
 									</Col>
 								</Row>
 
-								<Form.Group>
+								<Form.Group controlId="validationCustom01">
 									<Form.Label>Email</Form.Label>
 									<Form.Control 
+										required
 										type="email" 
 										placeholder="Email"
 										name="email"
@@ -87,6 +130,7 @@ class Register extends React.Component {
 											value={ this.state.password }
 											onChange={ this.handleTextInputChange }
 											/>
+											<small>Must be atleast 8 characters long</small>
 									</Col>
 									<Col md={6} sm={12}>
 										<Form.Label>Confirm Password</Form.Label>
