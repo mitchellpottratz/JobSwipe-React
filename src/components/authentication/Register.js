@@ -1,5 +1,7 @@
 import React from 'react';
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
+import { MDBFileInput } from "mdbreact";
+
 
 class Register extends React.Component {
 
@@ -74,6 +76,7 @@ class Register extends React.Component {
 		}
 	}  
 
+
 	render() {
 
 		return (
@@ -94,11 +97,14 @@ class Register extends React.Component {
 							}) }
 
 							<Form className="py-2" onSubmit={ this.handleSubmit }>
-								<Form.Group>
-									
-								</Form.Group>
+			
 								<Row>
 									<Col md={6} sm={12}>
+										<Form.Group>
+											<MDBFileInput 
+												btnColor="info"
+												/>
+										</Form.Group>
 										<Form.Group>
 											<Form.Label>First Name</Form.Label>
 											<Form.Control 
