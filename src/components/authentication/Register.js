@@ -1,6 +1,8 @@
 import React from 'react';
+
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import FileInput from '../common/FileInput.js';
+
 
 
 class Register extends React.Component {
@@ -21,9 +23,11 @@ class Register extends React.Component {
 		}
 	}
 
+
 	handleTextInputChange = (e) => {
 		this.setState({ [e.target.name]: e.target.value });
 	}
+
 
 	handleCheckBoxChange = (e) => {
 		// makes sure only one check box is checked at the same time
@@ -35,9 +39,11 @@ class Register extends React.Component {
 		this.setState({ [e.target.name]: e.target.checked });
 	}
 
+
 	handleProfilePictureChange = (file) => {
 		this.setState({ image: file });
 	}
+
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
@@ -47,7 +53,10 @@ class Register extends React.Component {
 		
 		this.checkPassword();
 		this.checkOneCheckboxIsSelected();
+
+		const userFormData = this.formatUserFormData();
 	}
+
 
 	checkPassword = () => {
 		const password = this.state.password;
@@ -69,6 +78,7 @@ class Register extends React.Component {
 		}
 	}
 
+
 	checkOneCheckboxIsSelected = () => {
 		if ((!this.state.is_candidate_user && !this.is_company_user) ||
 				(this.state.is_company_user && this.is_company_user)) {
@@ -77,6 +87,22 @@ class Register extends React.Component {
 					});
 		}
 	}  
+
+
+	formatUserFormData = () => {
+		const userFormData = new FormData();
+
+		userFormData.append('file', this.state.image, this.state.image.name);
+		userFormData.append('first_name', this.state.first_name);
+		userFormData.append('last_name', this.state.last_name);
+		userFormData.append('email', this.state.email);
+		userFormData.append('password', this.state.password);
+		userFormData.append('confirm_password', this.state.confirmed_password);
+		userFormData.append('is_candidate_user', this.state.is_candidate_user);
+		userFormData.append('is_company_user', this.state.is_company_user);
+
+		return userFormData;
+	}
 
 
 	render() {
