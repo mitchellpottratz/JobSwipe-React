@@ -11,8 +11,6 @@ import { Container } from 'react-bootstrap';
 import Register from './components/authentication/Register.js';
 
 // CSS
-import 'react-images-uploader/styles.css';
-import 'react-images-uploader/font.css';
 import './App.css';
 
 
