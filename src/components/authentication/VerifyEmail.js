@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Spinner } from 'react-bootstrap';
 import { Redirect } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import usersApi from '../../api/usersApi.js';
 
 
@@ -43,14 +45,14 @@ class VerifyEmail extends React.Component {
         }
 
         return (
-            <Container className="pt-4">
+            <Container className="text-center pt-4" >
                 { this.state.emailIsConfirmed ? (
-                    <div className="text-center mt-4">
-                        <h3>Email Confirmed</h3>
-                        
+                    <div className="mt-4">
+                        <h3>Email Confirmed</h3> 
+                        <FontAwesomeIcon icon={ faCheck } />
                     </div>
                 ) : (
-                    <div className="text-center mt-4">
+                    <div className="mt-4">
                         <h3>Confirming Email Address</h3>
                         <Spinner 
                             animation="border" 
