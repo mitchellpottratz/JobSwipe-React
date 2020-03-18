@@ -5,6 +5,7 @@ import { registerUser } from '../../actions/users.js'
 
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import FileInput from '../common/FileInput.js';
+import { Link } from 'react-router-dom';
 
 
 class Register extends React.Component {
@@ -244,7 +245,9 @@ class Register extends React.Component {
                     			<Button variant="primary" type="submit">Login</Button>
                   			</Form.Group> 
 							</Form>
-
+							<small>
+                  				Already have an account? <Link to="/login">Login Here</Link>
+                			</small> 
 						</Card.Body>
 					</Card>
 				</Col>

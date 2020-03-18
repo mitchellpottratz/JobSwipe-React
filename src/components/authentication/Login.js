@@ -1,15 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/users.js';
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Form,
-  Button
-} from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
 
 
 class Login extends React.Component {
@@ -121,7 +116,9 @@ class Login extends React.Component {
                     <Button variant="primary" type="submit">Login</Button>
                   </Form.Group> 
                 </Form> 
-
+                <small>
+                  Don't have an account? <Link to="/register">Register Here</Link>
+                </small>  
               </Card.Body>
             </Card>
           </Col>
