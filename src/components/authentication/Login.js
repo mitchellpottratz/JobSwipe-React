@@ -21,7 +21,8 @@ class Login extends React.Component {
       email: '',
       password: '',
       is_candidate_user: false,
-			is_company_user: false
+      is_company_user: false,
+      errorMessages: []
     }
   }
 
@@ -32,9 +33,16 @@ class Login extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
+    // so error messages are not duplicated
+    this.setState({ errorMessages: [] });
+
     const response = await this.props.loginUser(this.state);
-   
     
+    if (response.status.code === 404) {
+      this.setState({
+        errorMessages: [...this.state.errorMessages, response.status.message]
+      });
+    }
   }
 
   handleCheckBoxChange = (e) => {
@@ -62,6 +70,13 @@ class Login extends React.Component {
                   className="py-2" 
                   onSubmit={ this.handleSubmit }
                 >
+                  { this.state.errorMessages.map((message, i) => {
+								  return (
+									  <div key={ i }>
+										  <small className="text-danger">{ message }</small>
+									  </div>
+								  )
+							    }) }
                   <Form.Group>
                     <Form.Label>Email</Form.Label>
                     <Form.Control 
