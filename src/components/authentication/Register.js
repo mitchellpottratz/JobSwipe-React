@@ -5,6 +5,7 @@ import { registerUser } from '../../actions/users.js'
 
 import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import FileInput from '../common/FileInput.js';
+import FormButton from '../common/FormButton.js';
 import { Link } from 'react-router-dom';
 
 
@@ -23,6 +24,7 @@ class Register extends React.Component {
 			is_candidate_user: false,
 			is_company_user: false,
 			errorMessages: [],
+			isLoading: false,
 			hasRegistered: false
 		}
 	}
@@ -242,7 +244,11 @@ class Register extends React.Component {
   							</Form.Group>
 
 							<Form.Group>
-                    			<Button variant="primary" type="submit">Login</Button>
+								<FormButton
+                      				text="Register"
+                      				isLoading={ this.state.isLoading }
+                      				variant="primary"
+                    			/>
                   			</Form.Group> 
 							</Form>
 							<small>

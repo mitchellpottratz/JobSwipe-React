@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/users.js';
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+
 
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
+import FormButton from '../common/FormButton.js';
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 class Login extends React.Component {
@@ -17,7 +19,8 @@ class Login extends React.Component {
       password: '',
       is_candidate_user: false,
       is_company_user: false,
-      errorMessages: []
+      errorMessages: [],
+      isLoading: true
     }
   }
 
@@ -113,7 +116,11 @@ class Login extends React.Component {
                     />
                   </Form.Group>
                   <Form.Group>
-                    <Button variant="primary" type="submit">Login</Button>
+                    <FormButton
+                      text="Login"
+                      isLoading={ this.state.isLoading }
+                      variant="primary"
+                    />
                   </Form.Group> 
                 </Form> 
                 <small>
