@@ -237,7 +237,9 @@ class Register extends React.Component {
 										/>
   							</Form.Group>
 
-								<Button variant="primary" type="submit" className="mt-2">Register</Button>
+							<Form.Group>
+                    			<Button variant="primary" type="submit">Login</Button>
+                  			</Form.Group> 
 							</Form>
 
 						</Card.Body>
