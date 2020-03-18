@@ -15,6 +15,11 @@ class Login extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      email: '',
+      password: ''
+    }
   }
 
 
@@ -37,6 +42,7 @@ class Login extends React.Component {
                       type="text"
                       placeholder="Email"
                       name="email"
+                      value={ this.state.email }
                     />
                   </Form.Group>
                   <Form.Group>
@@ -46,12 +52,14 @@ class Login extends React.Component {
                       type="password"
                       placeholder="Password"
                       name="password"
+                      value={ this.state.password }
                     />
                   </Form.Group>
                   <Form.Group>
                     <Button variant="primary" type="submit">Login</Button>
                   </Form.Group> 
                 </Form> 
+
               </Card.Body>
             </Card>
           </Col>
