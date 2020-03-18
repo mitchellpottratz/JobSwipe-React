@@ -61,6 +61,13 @@ class Login extends React.Component {
 	}
 
   render() {
+
+    if (this.props.isLoggedIn) {
+      return (
+        <Redirect to="/hasLoggedIn" />
+      )
+    } 
+
     return ( 
       <Container className="py-4">
         <Row>
