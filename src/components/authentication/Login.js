@@ -18,7 +18,9 @@ class Login extends React.Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      is_candidate_user: false,
+			is_company_user: false
     }
   }
 
@@ -30,6 +32,16 @@ class Login extends React.Component {
     e.preventDefault();
     console.log('form submitted');
   }
+
+  handleCheckBoxChange = (e) => {
+		// makes sure only one check box is checked at the same time
+		this.setState({
+			is_candidate_user: false,
+			is_company_user: false	
+		});
+
+		this.setState({ [e.target.name]: e.target.checked });
+	}
 
   render() {
     return ( 
@@ -66,6 +78,24 @@ class Login extends React.Component {
                       name="password"
                       value={ this.state.password }
                       onChange={ this.handleChange }
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="I am a candidate user" 
+                      name="is_candidate_user"
+                      checked={ this.state.is_candidate_user }
+                      onChange={ this.handleCheckBoxChange }
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Check 
+                      type="checkbox" 
+                      label="I am a company user" 
+                      name="is_company_user"
+                      checked={ this.state.is_company_user }
+                      onChange={ this.handleCheckBoxChange }
                     />
                   </Form.Group>
                   <Form.Group>
