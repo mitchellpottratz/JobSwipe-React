@@ -10,6 +10,7 @@ import { Container } from 'react-bootstrap';
 // component imports 
 import Register from './components/authentication/Register.js';
 import VerifyEmail from './components/authentication/VerifyEmail.js';
+import Login from './components/authentication/Login.js';
 
 // CSS
 import './App.css';
@@ -35,6 +36,13 @@ class App extends React.Component {
               exact
               path="/verify-email/:emailConfirmatonCode" 
               component={ VerifyEmail } 
+            />
+
+            {/* Login */}
+            <Route 
+              exact
+              path="/login"
+              component={ Login }
             />
             
             {/* Home */}

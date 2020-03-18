@@ -7,7 +7,6 @@ import { Row, Col, Card, Form, Button } from 'react-bootstrap';
 import FileInput from '../common/FileInput.js';
 
 
-
 class Register extends React.Component {
 
 	constructor(props) {
