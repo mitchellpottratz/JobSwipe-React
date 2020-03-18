@@ -1,5 +1,6 @@
 import React from 'react';
-import { UseParams, Redirect } from 'react-router';
+import { Container, Spinner } from 'react-bootstrap';
+import { Redirect } from 'react-router';
 import usersApi from '../../api/usersApi.js';
 
 
@@ -16,32 +17,51 @@ class VerifyEmail extends React.Component {
 
 
     async componentDidMount() {
-        const response = await usersApi.verifyEmailAddress(this.props.match.params.emailConfirmationCode);
-
-        if (response.status.code === 204) {
-            this.setState({ emailIsConfirmed: true });
-        } else {
-            this.setState({ invalidCode: true });
-        }
+        this.confirmEmailAddress(this.props.match.params.emailConfirmationCode)
     }
 
 
-    confirmEmailAdddress = (emailConfirmationCode) => {
-            
+    confirmEmailAddress = async (emailConfirmationCode) => {
+        const response = await usersApi.verifyEmailAddress(emailConfirmationCode);
+
+        // if (response.status.code === 204) {
+            // this.setState({ emailIsConfirmed: true });
+        // } 
+        // else {
+        //     this.setState({ invalidCode: true });
+        // }
     } 
 
 
     render() {
 
-        if (this.state.emailIsConfirmed) {
+        // if the code in the parameters was invalid
+        if (this.state.invalidCode) {
             return (
-                <h1>Email Confirmed</h1>
-            )
-        } else {
-            return (
-                <h1>Confirming email address</h1>
+                <Redirect to="/login" />
             )
         }
+
+        return (
+            <Container className="pt-4">
+                { this.state.emailIsConfirmed ? (
+                    <div className="text-center mt-4">
+                        <h3>Email Confirmed</h3>
+                        
+                    </div>
+                ) : (
+                    <div className="text-center mt-4">
+                        <h3>Confirming Email Address</h3>
+                        <Spinner 
+                            animation="border" 
+                            variant="primary" 
+                            className="mt-2"
+                        />
+                    </div>
+                )
+                }
+            </Container>
+        )
     }
 }
 
