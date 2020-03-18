@@ -31,12 +31,12 @@ class App extends React.Component {
             </Route>
 
             {/* Verify Email Address */}
-            <Route path="/verify-email">
-              <Container>
-                <VerifyEmail />
-              </Container>
-            </Route>
-
+            <Route 
+              exact
+              path="/verify-email/:emailConfirmatonCode" 
+              component={ VerifyEmail } 
+            />
+            
             {/* Home */}
             <Route path="/">
               Home page
