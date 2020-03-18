@@ -22,6 +22,9 @@ class Login extends React.Component {
     }
   }
 
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
   render() {
     return ( 
@@ -43,6 +46,7 @@ class Login extends React.Component {
                       placeholder="Email"
                       name="email"
                       value={ this.state.email }
+                      onChange={ this.handleChange }
                     />
                   </Form.Group>
                   <Form.Group>
@@ -53,6 +57,7 @@ class Login extends React.Component {
                       placeholder="Password"
                       name="password"
                       value={ this.state.password }
+                      onChange={ this.handleChange }
                     />
                   </Form.Group>
                   <Form.Group>
