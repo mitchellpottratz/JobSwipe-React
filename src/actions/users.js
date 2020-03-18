@@ -8,5 +8,10 @@ export const registerUser = (registrationData) => async (dispatch) => {
 }
 
 
+export const loginUser = (loginData) => async (dispatch) => {
+    console.log('login action');
+} 
+
+
 
 

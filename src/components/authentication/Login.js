@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/users.js';
 
 import {
   Container,
@@ -28,9 +29,10 @@ class Login extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     console.log('form submitted');
+    this.props.loginUser();
   }
 
   handleCheckBoxChange = (e) => {
@@ -38,8 +40,8 @@ class Login extends React.Component {
 		this.setState({
 			is_candidate_user: false,
 			is_company_user: false	
-		});
-
+    });
+    
 		this.setState({ [e.target.name]: e.target.checked });
 	}
 
@@ -121,4 +123,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {})(Login)
+export default connect(mapStateToProps, { loginUser })(Login)
