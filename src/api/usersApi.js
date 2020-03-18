@@ -13,6 +13,7 @@ export default {
             });
             const parsedResponse = await response.json();
             return parsedResponse;
+            
         } catch (error) {
             console.log('error while registering:', error);
         }
@@ -28,9 +29,8 @@ export default {
                 credentials: 'include',
             });
             const parsedResponse = await response.json();
-            console.log('verify email response:', parsedResponse);
-
             return parsedResponse;
+
         } catch (error) {
             console.log('error while registering:', error);
         }

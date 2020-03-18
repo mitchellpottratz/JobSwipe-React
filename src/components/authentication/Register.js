@@ -60,10 +60,8 @@ class Register extends React.Component {
 
 		const userFormData = this.formatUserFormData();
 		const response = await this.props.registerUser(userFormData);
-		console.log('response:', response);
 
 		if (response.status.code === 201) {
-			console.log('successfully registered');
 			this.setState({ hasRegistered: true });
 		}	
 	}
