@@ -26,6 +26,11 @@ class Login extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('form submitted');
+  }
+
   render() {
     return ( 
       <Container className="py-4">
@@ -37,7 +42,10 @@ class Login extends React.Component {
               <Card.Body>
                 <Card.Title>Login</Card.Title>
 
-                <Form className="py-2">
+                <Form 
+                  className="py-2" 
+                  onSubmit={ this.handleSubmit }
+                >
                   <Form.Group>
                     <Form.Label>Email</Form.Label>
                     <Form.Control 

@@ -140,7 +140,10 @@ class Register extends React.Component {
 								)
 							}) }
 
-							<Form className="py-2" onSubmit={ this.handleSubmit }>
+							<Form 
+								className="py-2" 
+								onSubmit={ this.handleSubmit }
+							>
 								<Form.Group>
 									<FileInput 
 										handleFileUpload={ this.handleProfilePictureChange }
