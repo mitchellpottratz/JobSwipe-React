@@ -20,7 +20,7 @@ class Login extends React.Component {
       is_candidate_user: false,
       is_company_user: false,
       errorMessages: [],
-      isLoading: true
+      isLoading: false
     }
   }
 
@@ -31,11 +31,18 @@ class Login extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    // so error messages are not duplicated
-    this.setState({ errorMessages: [] });
+    // so the buttons loading icon appearns and error
+    // messages aren't duplicated
+    this.setState({ 
+      isLoading: true, 
+      errorMessages: []
+    });
 
     const response = await this.props.loginUser(this.state);
     
+    // hides the loading icon
+    this.setState({ isLoading: false });
+
     if (response.status.code === 404) {
       this.setState({
         errorMessages: [...this.state.errorMessages, response.status.message]
