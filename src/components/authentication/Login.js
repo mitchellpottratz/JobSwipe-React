@@ -33,7 +33,7 @@ class Login extends React.Component {
     e.preventDefault();
     console.log('form submitted');
 
-    const response = await this.props.loginUser();
+    const response = await this.props.loginUser(this.state);
     console.log('login response:', response);
   }
 

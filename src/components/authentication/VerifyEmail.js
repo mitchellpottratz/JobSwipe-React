@@ -25,6 +25,8 @@ class VerifyEmail extends React.Component {
 
     confirmEmailAddress = async (emailConfirmationCode) => {
         const response = await usersApi.verifyEmailAddress(emailConfirmationCode);
+    
+        console.log('email verification response:', response);
 
         if (response.status.code === 204) {
             this.setState({ emailIsConfirmed: true });

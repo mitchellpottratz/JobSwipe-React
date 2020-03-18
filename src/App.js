@@ -34,7 +34,7 @@ class App extends React.Component {
             {/* Verify Email Address */}
             <Route 
               exact
-              path="/verify-email/:emailConfirmatonCode" 
+              path="/verify-email/:emailConfirmationCode" 
               component={ VerifyEmail } 
             />
 

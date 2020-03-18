@@ -10,6 +10,12 @@ export const registerUser = (registrationData) => async (dispatch) => {
 
 export const loginUser = (loginData) => async (dispatch) => {
     console.log('login action');
+    console.log('login data:', loginData);
+
+    const response = await usersAPI.loginUser(loginData);
+    console.log('response in action:', response);
+
+    return response;
 } 
 
 
