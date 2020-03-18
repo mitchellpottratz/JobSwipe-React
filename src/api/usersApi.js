@@ -15,14 +15,13 @@ export default {
             return parsedResponse;
             
         } catch (error) {
+            // TODO - handle the error
             console.log('error while registering:', error);
         }
     },
     
     // verifies a users email address so they can now login
     verifyEmailAddress: async (emailConfirmationCode) => {
-        console.log('verify email address api call');
-
         try {
             const response = await fetch(apiURL + 'users/verify-email/' + emailConfirmationCode, {
                 method: 'GET',
@@ -32,9 +31,29 @@ export default {
             return parsedResponse;
 
         } catch (error) {
-            console.log('error while registering:', error);
+            // TODO - handle the error
+            console.log('error while verifying email:', error);
+        }
+    },
+
+    // logs in a candidate or company user
+    loginUser: async (loginData) => {
+        try {
+            const response = await fetch(apiURL + 'users/login', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(loginData),
+            });
+            const parsedResponse = await response.json();
+            return parsedResponse;
+
+        } catch (error) {
+            // TODO - handle the error
+            console.log('error while logging in:', error);
         }
     }
-
 }
 
