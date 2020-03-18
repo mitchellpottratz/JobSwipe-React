@@ -31,10 +31,10 @@ class Login extends React.Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('form submitted');
 
     const response = await this.props.loginUser(this.state);
-    console.log('login response:', response);
+   
+    
   }
 
   handleCheckBoxChange = (e) => {

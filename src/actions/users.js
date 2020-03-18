@@ -9,11 +9,14 @@ export const registerUser = (registrationData) => async (dispatch) => {
 
 
 export const loginUser = (loginData) => async (dispatch) => {
-    console.log('login action');
-    console.log('login data:', loginData);
-
     const response = await usersAPI.loginUser(loginData);
-    console.log('response in action:', response);
+
+    if (response.status.code === 200) {
+        dispatch({
+            type: types.LOGIN_USER,
+            payload: response.data
+        });
+    }
 
     return response;
 } 
