@@ -54,14 +54,21 @@ class Register extends React.Component {
 	handleSubmit = async (e) => {
 		e.preventDefault();
 
-		// clears all error messages which may be on the form
-		await this.setState({ errorMessages: [] });
+		// so the buttons loading icon appears and error
+    	// messages aren't duplicated
+    	this.setState({ 
+			isLoading: true, 
+			errorMessages: []
+	  	});
 		
 		this.checkPassword();
 		this.checkOneCheckboxIsSelected();
 
 		const userFormData = this.formatUserFormData();
 		const response = await this.props.registerUser(userFormData);
+
+		// hides the buttons loading icon
+		this.setState({ isLoading: false });
 
 		if (response.status.code === 201) {
 			this.setState({ hasRegistered: true });
@@ -100,6 +107,7 @@ class Register extends React.Component {
 	}  
 
 
+	// since the request body includes an image it needs to be formatted as form data
 	formatUserFormData = () => {
 		const userFormData = new FormData();
 

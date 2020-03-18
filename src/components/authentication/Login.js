@@ -31,7 +31,7 @@ class Login extends React.Component {
   handleSubmit = async (e) => {
     e.preventDefault();
 
-    // so the buttons loading icon appearns and error
+    // so the buttons loading icon appears and error
     // messages aren't duplicated
     this.setState({ 
       isLoading: true, 
@@ -40,7 +40,7 @@ class Login extends React.Component {
 
     const response = await this.props.loginUser(this.state);
     
-    // hides the loading icon
+    // hides the buttons loading icon
     this.setState({ isLoading: false });
 
     if (response.status.code === 404) {
